@@ -24,9 +24,7 @@ class ATL_NO_VTABLE CCUnknown :
 	public IDispatchImpl<ICUnknown, &IID_ICUnknown, &LIBID_IClassFactory2Lib, /*wMajor =*/ 1, /*wMinor =*/ 0>
 {
 public:
-	CCUnknown()
-	{
-	}
+	CCUnknown();
 
 DECLARE_REGISTRY_RESOURCEID(IDR_CUNKNOWN)
 
@@ -37,18 +35,13 @@ BEGIN_COM_MAP(CCUnknown)
 	COM_INTERFACE_ENTRY(IDispatch)
 END_COM_MAP()
 
+	//DECLARE_PROTECT_FINAL_CONSTRUCT()
+	void InternalFinalConstructAddRef();
+	void InternalFinalConstructRelease();
 
+	HRESULT FinalConstruct();
 
-	DECLARE_PROTECT_FINAL_CONSTRUCT()
-
-	HRESULT FinalConstruct()
-	{
-		return S_OK;
-	}
-
-	void FinalRelease()
-	{
-	}
+	void FinalRelease();
 
 public:
 
