@@ -1,0 +1,16 @@
+HKCR
+{
+	NoRemove CLSID
+	{
+		ForceRemove {4F1586EA-BF58-423D-81D9-19DD6248DFE4} = s 'CUnknown Class'
+		{
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{ACCD544C-42AC-4A37-9300-DEBE5626ADE7}'
+			Version = s '1.0'
+		}
+	}
+}
