@@ -7,11 +7,12 @@
 CClassFactory::CClassFactory() : m_lRef(0){
 
 	m_lRef = 1;
+	_tprintf(_T("CClassFactory::CClassFactory, m_lRef=%ld\n"), m_lRef);
 
 }
 
 CClassFactory::~CClassFactory(){
-
+	_tprintf(_T("CClassFactory::~CClassFactory, m_lRef=%ld\n"), m_lRef);
 }
 
 STDMETHODIMP CClassFactory::QueryInterface(REFIID riid, LPVOID *ppv){
@@ -32,20 +33,20 @@ STDMETHODIMP CClassFactory::QueryInterface(REFIID riid, LPVOID *ppv){
 
 STDMETHODIMP_(ULONG) CClassFactory::AddRef(){
 
-	_tprintf(_T("CClassFactory::AddRef!\n"));
 	LockModule();
-	return InterlockedIncrement(&m_lRef);
-
+	const LONG res = InterlockedIncrement(&m_lRef);
+	_tprintf(_T("CClassFactory::AddRef, m_lRef=%ld\n"), res);
+	return res;
 }
 
 STDMETHODIMP_(ULONG) CClassFactory::Release(){
 
-	_tprintf(_T("CClassFactory::Release!\n"));
 	LONG res = InterlockedDecrement(&m_lRef);
 	if (res == 0){
 		UnlockModule();
 		delete this;
 	}
+	_tprintf(_T("CClassFactory::Release, m_lRef=%ld\n"), res);
 	return res;
 
 }

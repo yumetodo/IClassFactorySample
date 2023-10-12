@@ -32,20 +32,20 @@ STDMETHODIMP CUnknown::QueryInterface(REFIID riid, LPVOID *ppv){
 
 STDMETHODIMP_(ULONG) CUnknown::AddRef(){
 
-	_tprintf(_T("CUnknown::AddRef!\n"));
 	LockModule();
-	return InterlockedIncrement(&m_lRef);
-
+	LONG res = InterlockedIncrement(&m_lRef);
+	_tprintf(_T("CUnknown::AddRef, m_lRef=%ld\n"), res);
+	return res;
 }
 
 STDMETHODIMP_(ULONG) CUnknown::Release(){
 
-	_tprintf(_T("CUnknown::Release!\n"));
 	LONG res = InterlockedDecrement(&m_lRef);
 	if (res == 0){
 		UnlockModule();
 		delete this;
 	}
+	_tprintf(_T("CUnknown::Release, m_lRef=%ld\n"), res);
 	return res;
 
 }
