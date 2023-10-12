@@ -52,6 +52,7 @@ END_COM_MAP()
 
 public:
 
+	STDMETHODIMP Method() override;
 
 
 };

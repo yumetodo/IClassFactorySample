@@ -209,6 +209,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CUnknown.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -246,6 +247,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CUnknown.h" />
     <ClInclude Include="dllmain.h" />
     <ClInclude Include="IClassFactory2_i.h" />
     <ClInclude Include="Resource.h" />
@@ -259,6 +261,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CUnknown.rgs" />
     <None Include="IClassFactory2.def" />
     <None Include="IClassFactory2.rgs" />
   </ItemGroup>

@@ -8,11 +8,28 @@ import "oaidl.idl";
 import "ocidl.idl";
 
 [
+	object,
+	uuid(4670985E-D857-46F5-9FFB-83B5032852DA),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ICUnknown : IDispatch{
+	HRESULT Method(void);
+};
+[
 	uuid(ACCD544C-42AC-4A37-9300-DEBE5626ADE7),
 	version(1.0),
 ]
 library IClassFactory2Lib
 {
 	importlib("stdole2.tlb");
+	[
+		uuid(4F1586EA-BF58-423D-81D9-19DD6248DFE4)		
+	]
+	coclass CUnknown
+	{
+		[default] interface ICUnknown;
+	};
 };
 
