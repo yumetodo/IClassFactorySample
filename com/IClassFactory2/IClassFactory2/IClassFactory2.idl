@@ -1,0 +1,18 @@
+// IClassFactory2.idl : IClassFactory2 の IDL ソース
+//
+
+// このファイルは、タイプ ライブラリ (IClassFactory2.tlb) およびマーシャリング コードを
+// 作成するために MIDL ツールによって処理されます。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(ACCD544C-42AC-4A37-9300-DEBE5626ADE7),
+	version(1.0),
+]
+library IClassFactory2Lib
+{
+	importlib("stdole2.tlb");
+};
+
